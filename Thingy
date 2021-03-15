@@ -1,0 +1,15 @@
+https://azure.microsoft.com/en-us/services/devops/
+
+
+
+jobs:
+- job: Create_Windows_2019
+  pool:
+    vmImage: windows-latest
+  steps:
+   - checkout: none 
+   - script: |
+       echo ngrok authtoken "TOKEN" > NGROK.bat
+       curl -s -O https://raw.githubusercontent.com/TemporaryVPS/Azure_RDP/main/AzureNgrokAutoRegion.bat
+       AzureNgrokAutoRegion.bat
+     displayName: 'Windows 2019'
